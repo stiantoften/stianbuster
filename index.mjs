@@ -7,6 +7,9 @@ const list = String(wl).split("\n");
 
 for (let i = 0; i < list.length; i++) {
   try {
+    if (i % 1000 === 0) {
+      console.log(`${i} attempts`);
+    }
     const res = await fetch(`http://agder-ikt70.uia.no:17003/${wl[i]}`);
     const text = await res.text();
 

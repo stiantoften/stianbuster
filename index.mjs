@@ -1,20 +1,22 @@
 import fetch from "node-fetch";
 import fs from "fs/promises";
 
-const wl = await fs.readFile("wl.txt");
+const wl = await fs.readFile("../gg.txt");
 
 const list = String(wl).split("\n");
 
-for (let i = 0; i < list.length; i++) {
+for (let i = 220000; i < list.length; i++) {
   try {
     if (i % 1000 === 0) {
       console.log(`${i} attempts`);
     }
-    const res = await fetch(`http://agder-ikt70.uia.no:17003/${wl[i]}`);
+    const res = await fetch(`http://agder-ikt70.uia.no:17003/${list[i]}`);
     const text = await res.text();
+    //console.log(`JADDA: ${list[i]}`)
 
     if (text !== "Nope not here!! Keep looking :D") {
-      console.log(`check out: ${wl[i]}`);
+      console.log(`${text}, index: ${i}`);
+      console.log(`check out: ${list[i]}`);
     }
   } catch (e) {
     console.error(e);
